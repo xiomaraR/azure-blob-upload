@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project Overview
 
-## Getting Started
+A Next.js application designed to handle image uploads to an Azure Blob container. This project focuses on providing a simple and intuitive interface for users to upload images, which are then stored in Azure Blob Storage.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **File Upload**: Drag-and-drop or click to upload images.
+- **Image Preview**: Preview images before uploading.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Azure Resources Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Azure Blob Storage**: Used for storing uploaded images.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Future Goals
 
-## Learn More
+While the current version of the application only supports image uploads, there are plans to extend its functionality:
 
-To learn more about Next.js, take a look at the following resources:
+- Image Analysis: Integrate with Azure Blob Trigger Function App to analyze uploaded images and display results in the UI.
+-
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Acknowledgements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Azure Blob Storage Documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/)
