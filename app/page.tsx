@@ -1,4 +1,4 @@
-import Upload from "@/components/upload";
+import Upload from "@/components/uploadForm";
 import { Toaster } from "@/components/toaster";
 
 export default function Home() {

@@ -7,10 +7,8 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
-
-import { BlobServiceClient, AnonymousCredential } from "@azure/storage-blob";
 import toast from "react-hot-toast";
-import LoadingDots from "@/components/loading-dots";
+import LoadingDots from "./loading-dots";
 
 const UploadPage: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -35,7 +33,7 @@ const UploadPage: React.FC = () => {
     []
   );
 
-  const handleDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = useCallback((event: React.DragEvent<HTMLLabelElement>) => {
     event.preventDefault();
     event.stopPropagation();
     setDragActive(false);
@@ -59,27 +57,22 @@ const UploadPage: React.FC = () => {
 
     setSaving(true);
 
-    const containerName =
-      process.env.NEXT_PUBLIC_AZURE_STORAGE_CONTAINER_NAME ?? "";
-    const sasUrl = process.env.NEXT_PUBLIC_BLOB_SERVICE_SAS_URL ?? "";
+    const formData = new FormData();
+    formData.append("file", file);
 
     try {
-      // Initialize the BlobServiceClient with the SAS URL
-      const blobServiceClient = new BlobServiceClient(
-        sasUrl,
-        new AnonymousCredential()
-      );
-      const containerClient =
-        blobServiceClient.getContainerClient(containerName);
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-      // Create a BlockBlobClient
-      const blockBlobClient = containerClient.getBlockBlobClient(file.name);
-
-      // Upload the file
-      await blockBlobClient.uploadData(file);
-
-      toast.success("File uploaded successfully!");
-      setImagePreview(null); // Clear the preview after upload
+      const result = await response.json();
+      if (response.ok) {
+        toast.success("File uploaded successfully!");
+        setImagePreview(null); // Clear the preview after upload
+      } else {
+        toast.error(result.error || "An error occurred during file upload.");
+      }
     } catch (error) {
       console.error(error);
       toast.error("An error occurred during file upload.");
@@ -158,7 +151,7 @@ const UploadPage: React.FC = () => {
           )}
           <input
             id="image-upload"
-            name="image"
+            name="file"
             type="file"
             accept="image/*"
             className="sr-only"

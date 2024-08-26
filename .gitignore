@@ -38,4 +38,5 @@ next-env.d.ts
 local.settings.json
 
 # scratch files
-uploaderv1.tsx
+components/uploaderv1.tsx
+components/uploadSas.tsx
