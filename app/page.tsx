@@ -10,7 +10,7 @@ export default function Home() {
         </h1>
       </section>
       <Toaster />
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+      <div className="bg-white/30 p-12 shadow-xl ring-1 ring-neutral-200 rounded-lg backdrop-blur-lg max-w-xl mx-auto w-full">
         <Upload />
       </div>
     </main>
