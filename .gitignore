@@ -40,3 +40,4 @@ local.settings.json
 # scratch files
 components/uploaderv1.tsx
 components/uploadSas.tsx
+scratch.yml
