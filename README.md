@@ -16,7 +16,6 @@ A Next.js application designed to handle image uploads to an Azure Blob containe
 While the current version of the application only supports image uploads, there are plans to extend its functionality:
 
 - Image Analysis: Integrate with Azure Blob Trigger Function App to analyze uploaded images and display results in the UI.
--
 
 ## Acknowledgements
 
